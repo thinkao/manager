@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wxy.dao.Admin_coursetableDao">
+
+    <!--查询所有课表信息-->
+    <select id="getCourseTableAll" resultType="com.wxy.pojo.Admin_coursetable">
+        select * from coursetable
+    </select>
+
+    <!--根据cno查询信息-->
+    <select id="getCourseByCno" parameterType="Integer" resultType="com.wxy.pojo.Admin_coursetable">
+        select * from coursetable where cno = #{cno}
+    </select>
+
+</mapper>

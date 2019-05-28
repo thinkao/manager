@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="header">
+</head>
+<body>
+<section class="content">
+    <form class="form-horizontal" th:action="@{/admin/updateTea}">
+        <!--1.SpringMVC中配置HiddenHttpMethodFilter
+            2.创建一个POST表单
+            3.创建一个Input name=_method;值就是请求方法
+        -->
+        <input type="hidden" name="_method" value="put" th:if="${teacher!=null}"/>
+        <input type="hidden" name="tno" th:if="${teacher!=null}" th:value="${teacher.tno}">
+
+
+        <div class="form-group">
+            <label for="tno" class="col-sm-2 control-label">编号</label>
+            <div class="col-sm-3">
+                <input type="text" th:value="${teacher!=null}?${teacher.tno}" th:disabled="${teacher!=null}?'disable'" name="tno" class="form-control" id="tno">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="tname" class="col-sm-2 control-label">教师姓名</label>
+            <div class="col-sm-3">
+                <input type="text" th:value="${teacher!=null}?${teacher.tname}" name="tname" class="form-control" id="tname" >
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="tphone" class="col-sm-2 control-label">联系方式</label>
+            <div class="col-sm-3">
+                <input type="text" th:value="${teacher!=null}?${teacher.tphone}" name="tphone" class="form-control" id="tphone" >
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="tprofess" class="col-sm-2 control-label">专业</label>
+            <div class="col-sm-3">
+                <input type="text" th:value="${teacher!=null}?${teacher.tprofess}" name="tprofess" class="form-control" id="tprofess" >
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="tcourse" class="col-sm-2 control-label">所教课程</label>
+            <div class="col-sm-3">
+                <input type="text" th:value="${teacher!=null}?${teacher.tcourse}" name="tcourse" class="form-control" id="tcourse">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="tusername" class="col-sm-2 control-label">账号</label>
+            <div class="col-sm-3">
+                <input type="text" th:value="${teacher!=null}?${teacher.tusername}" name="tusername" class="form-control" id="tusername">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="tpassword" class="col-sm-2 control-label">密码</label>
+            <div class="col-sm-3">
+                <input type="text" th:value="${teacher!=null}?${teacher.tpassword}" name="tpassword" class="form-control" id="tpassword">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-success col-sm-3">提交</button>
+            </div>
+        </div>
+    </form>
+</section>
+<div th:include="footer"></div>
+</body>
+</html>

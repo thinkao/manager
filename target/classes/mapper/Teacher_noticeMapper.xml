@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wxy.dao.Teacher_noticeDao">
+
+    <select id="getTeacherNoticeAll" resultType="com.wxy.pojo.Admin_notice">
+        select * from teacher_notice
+    </select>
+
+    <insert id="addTeacherNotice" parameterType="com.wxy.pojo.Admin_notice">
+        insert into teacher_notice values (#{nid},#{context},#{time})
+    </insert>
+
+</mapper>

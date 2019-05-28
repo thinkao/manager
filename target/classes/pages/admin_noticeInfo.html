@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="header">
+</head>
+<body>
+<section class="content table-content">
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+        <h2>公告信息</h2>
+        <a th:href="@{/admin/putNotice}" class="btn btn-success">发布公告</a>
+        <div class="table-responsive">
+            <table class="table table-striped table-sm" >
+                <thead>
+                <tr>
+                    <th>编号</th>
+                    <th>内容</th>
+                    <th>时间</th>
+                </tr>
+                </thead>
+                <tbody th:each="admin_noticeList:${admin_noticeList}">
+                <tr>
+                    <td th:text="${admin_noticeList.nid}">1,001</td>
+                    <td th:text="${admin_noticeList.context}">1,001</td>
+                    <td th:text="${admin_noticeList.time}">1,001</td>
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</section>
+<div th:include="footer"></div>
+</body>
+</html>

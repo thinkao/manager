@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wxy.dao.Admin_courseDao">
+
+    <!--查询所有课程信息-->
+    <select id="getCourseAll" resultType="com.wxy.pojo.Admin_course">
+        select * from course
+    </select>
+
+    <!--增加一个新课程-->
+    <insert id="addCourse" parameterType="com.wxy.pojo.Admin_course">
+         insert into `course`(cno,cname,cteacher,cnumber,coursetab)
+        value (#{cno},#{cname},#{cteacher},#{cnumber},#{coursetab})
+    </insert>
+
+    <!--删除课程-->
+    <delete id="deleteCourse" parameterType="Integer">
+        delete from course where  cno = #{cno}
+    </delete>
+
+    <!--根据cno查询课程信息-->
+
+    <select id="getCourseByCno" parameterType="Integer" resultType="com.wxy.pojo.Admin_course">
+        select * from course where cno = #{cno}
+    </select>
+    <!--修改课程信息-->
+    <update id="updateCourse" parameterType="com.wxy.pojo.Admin_course">
+        update course set cname = #{cname},cteacher = #{cteacher},cnumber = #{cnumber},coursetab = #{coursetab} where cno = #{cno}
+    </update>
+
+</mapper>

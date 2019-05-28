@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wxy.dao.TeacherDao">
+
+    <!--查询所有老师信息-->
+    <select id="getTeacherAll" resultType="com.wxy.pojo.Teacher">
+        select * from teacher
+    </select>
+
+    <!--增加一个新老师-->
+    <insert id="addTeacher" parameterType="com.wxy.pojo.Teacher">
+         insert into `teacher`(tno,tname,tphone,tprofess,tcourse,tusername,tpassword)
+        value (#{tno},#{tname},#{tphone},#{tprofess},#{tcourse},#{tusername},#{tpassword})
+    </insert>
+
+    <!--根据编号删除一个老师-->
+    <delete id="deleteTeacher" parameterType="Integer">
+        delete from teacher where  tno = #{tno}
+    </delete>
+
+    <!--根据编号查询老师信息-->
+    <select id="getTeacherByTno" parameterType="Integer" resultType="com.wxy.pojo.Teacher">
+        select * from teacher where tno  = #{tno}
+    </select>
+
+    <!--修改老师信息-->
+    <update id="updateTeacher" parameterType="com.wxy.pojo.Teacher">
+         update teacher set tname=#{tname},tphone=#{tphone},tprofess=#{tprofess},tcourse=#{tcourse},
+         tusername=#{tusername},tpassword=#{tpassword} where tno = #{tno}
+    </update>
+
+</mapper>

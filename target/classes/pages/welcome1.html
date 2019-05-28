@@ -1,0 +1,13 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="header">
+</head>
+<body >
+<section class="content table-content">
+    <h2 class="sub-header">Bingo!</h2>
+    <h3>欢迎<td th:text="${session.studentList1}"></td>同学来到考试管理系统,，请点击左边的列表查看你的信息吧</h3>
+
+</section>
+<div th:include="footer"></div>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Bootstrap 实例 - 简单的轮播（Carousel）插件</title>
+    <link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <style media="screen">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        body {
+            background-color: rgb(244, 244, 244);
+        }
+        .container {
+            width: 1000px;
+            margin: auto;
+            margin-top: 3em;
+            clear: left;
+        }
+        .wrap {
+            -webkit-perspective:400px;
+            -moz-perspective:400px;
+            float: left;
+            width: 220px;
+            margin-right: 20px;
+        }
+        .image {
+            width: 100%;
+            height: 200px;
+            -webkit-transform-style:preserve-3d;
+            -webkit-transition:1.5s;
+            -moz-transform-style:preserve-3d;
+            -moz-transition:1.5s;
+        }
+        img {
+            width: 220px;
+            height: 200px;
+        }
+        .wrap:hover .image {
+            -webkit-transform:rotateY(180deg);
+            -moz-transform:rotateY(180deg);
+        }
+        .display {
+            position: absolute;
+            -webkit-backface-visibility:hidden;
+            -moz-backface-visibility:hidden;
+        }
+        .display h3 {
+            color: white;
+            text-align: center;
+        }
+        .back {
+            -webkit-transform:rotateY(180deg);
+            -moz-transform:rotateY(180deg);
+            background: -webkit-gradient(linear,left top,left bottom,from(#fdbb5a), to(#db5726));
+            background: -moz-linear-gradient(top,#fdbb5a,#db5726);
+            width: 220px;
+            height: 200px;
+            line-height: 200px;
+        }
+    </style>
+</head>
+<body>
+<ul class="nav nav-tabs">
+    <li role="presentation" class="active"><a th:href="@{/}">HOME</a></li>
+    <li role="presentation"><a th:href="@{/start}">登录</a></li>
+    <li role="presentation"><a th:href="@{/addUser}">注册</a></li>
+    <li role="presentation" style="text-decoration-style: solid;font-family: 'Adobe 楷体 Std R';size: 150px;
+    color: #0D8BBD;margin-top: 10px;padding-left: 1000px">欢迎来到天津科技大学教学资源管理系统</li>
+</ul>
+
+<div id="myCarousel" class="carousel slide">
+    <!-- 轮播（Carousel）指标 -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <!-- 轮播（Carousel）项目 -->
+    <div class="carousel-inner">
+        <div class="item active">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555932101740&di=9ee42bcea75b9a6b91f15b6da964ac37&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F9%2F5879c03369db1.jpg" alt="Second slide"style="width: 100%;height: 500px">
+        </div>
+        <div class="item">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555932388517&di=adfc12575af0988e13b4cfc18d564a45&imgtype=0&src=http%3A%2F%2Fb.zol-img.com.cn%2Fdesk%2Fbizhi%2Fimage%2F3%2F960x600%2F136791004116.jpg" alt="Second slide"style="width: 100%;height: 500px">
+        </div>
+        <div class="item">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1556526887&di=bfbad078380fffd1ec63abaf7d7dd163&imgtype=jpg&er=1&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2Fd%2F573534849e26b.jpg" alt="Third slide" style="width: 100%;height: 500px">
+        </div>
+    </div>
+    <!-- 轮播（Carousel）导航 -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+<div class="container">
+    <div class="wrap">
+        <div class="image">
+            <div class="display front">
+                <img src="https://tse2-mm.cn.bing.net/th?q=%e8%93%9d%e8%89%b2&w=120&h=120&c=1&rs=1&qlt=90&dpr=1.25&pid=InlineBlock&mkt=zh-CN&adlt=strict&t=1&mw=247" alt="" />
+            </div>
+            <div class="display back">
+                <h3>网站说明</h3>
+                <h5 style="margin: 10px;color: #1a2129;font-family: 'Adobe 楷体 Std R'">本网站为天津科技大学资源管理系统，服务于科大的莘莘学子和老师</h5>
+            </div>
+        </div>
+    </div>
+    <div class="wrap">
+        <div class="image">
+            <div class="display front">
+                <img src="https://tse2-mm.cn.bing.net/th?q=%e9%87%91%e8%89%b2&w=120&h=120&c=1&rs=1&qlt=90&dpr=1.25&pid=InlineBlock&mkt=zh-CN&adlt=strict&t=1&mw=247" alt="" />
+            </div>
+            <div class="display back">
+                <h3>网站功能</h3>
+                <h5 style="margin: 10px;color: #1a2129;font-family: 'Adobe 楷体 Std R'">本网站旨在为学生提供便利和服务，针对于补退选课，教师申请，信息录入等功能</h5>
+            </div>
+        </div>
+    </div>
+    <div class="wrap">
+        <div class="image">
+            <div class="display front">
+                <img src="https://tse3-mm.cn.bing.net/th?q=%e7%ba%a2%e8%89%b2&w=120&h=120&c=1&rs=1&qlt=90&dpr=1.25&pid=InlineBlock&mkt=zh-CN&adlt=strict&t=1&mw=247" alt="" />
+            </div>
+            <div class="display back">
+                <h3>网站特色</h3>
+                <h5 style="margin: 10px;color: #1a2129;font-family: 'Adobe 楷体 Std R'">专注于解决师生之间的信息沟通，课程、教室安排等，是国内第999家学生服务网站</h5>
+            </div>
+        </div>
+    </div>
+    <div class="wrap">
+        <div class="image">
+            <div class="display front">
+                <img src="https://tse4-mm.cn.bing.net/th?q=%e7%b4%ab%e8%89%b2&w=120&h=120&c=1&rs=1&qlt=90&dpr=1.25&pid=InlineBlock&mkt=zh-CN&adlt=strict&t=1&mw=247" alt="" />
+            </div>
+            <div class="display back">
+                <h3>使用说明</h3>
+                <h5 style="margin: 10px;color: #1a2129;font-family: 'Adobe 楷体 Std R'">有账号可以直接登录，没有账号需要先行注册</h5>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:include="footer"></div>
+</div>
+</body>
+</html>

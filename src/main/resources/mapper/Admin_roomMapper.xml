@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wxy.dao.Admin_roomDao">
+
+    <!--查询所有课程信息-->
+    <select id="getRoomAll" resultType="com.wxy.pojo.Admin_room">
+        select * from room
+    </select>
+
+    <!--增加新教室-->
+    <insert id="addRoom" parameterType="com.wxy.pojo.Admin_room">
+         insert into `room`(rno,rnumber,rcomputer)
+        value (#{rno},#{rnumber},#{rcomputer})
+    </insert>
+
+</mapper>

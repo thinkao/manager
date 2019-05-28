@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" enctype="multipart/form-data"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>上传头像</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <!--导入jquery的文件-->
+    <script type="text/javascript" th:src="@{/js/jquery-1.11.0.js}"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<!--<form action="/my/altersuccess" method="post">-->
+<div class="container-fluid">
+
+        <!--用户信息栏-->
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div class="row">
+                    <img th:src="|@{/get}${session.users.avatar}|"
+                         class="img-circle img-thumbnail" style="width:100px;height:100px"/>
+                </div>
+                <!--alt="修改" onerror="this.src='/assets/adminlte-2.3.7/img/user2-160x160.jpg'"-->
+                <!--<div class="row">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">点击上传头像
+                    </button>
+                </div>-->
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+                     aria-labelledby="myModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <!--content-->
+                        <div class="modal-content">
+                            <!--<div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"
+                                        aria-hidden="true">
+                                    &times;
+                                </button>
+                            </div>-->
+                            <!--body-->
+                            <div class="modal-body">
+                                <form action="/upload" method="post" enctype="multipart/form-data">
+                                    <div class="row">
+                                        <input type="file" name="file"/><br/>
+                                        <input type="submit" value="文件上传" class="btn btn-primary"/><br/>
+                                    </div>
+                                </form>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal -->
+                </div>
+            </div>
+        </div>
+    </div>
+<!--</form>-->
+</body>
+</html>

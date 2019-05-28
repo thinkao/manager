@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="header">
+</head>
+<body>
+<section class="content">
+    <form class="form-horizontal" th:action="@{/teacher/addGrade}">
+        <!--1.SpringMVC中配置HiddenHttpMethodFilter
+            2.创建一个POST表单
+            3.创建一个Input name=_method;值就是请求方法
+        -->
+        <input type="hidden" name="_method" value="put" th:if="${student!=null}"/>
+        <input type="hidden" name="sno" th:if="${student!=null}" th:value="${student.sno}">
+
+
+        <div class="form-group">
+            <label for="sno" class="col-sm-2 control-label">学号</label>
+            <div class="col-sm-3">
+                <input type="text" th:value="${student!=null}?${student.sno}" th:disabled="${student!=null}?'disable'" name="sno" class="form-control" id="sno">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="sname" class="col-sm-2 control-label">姓名</label>
+            <div class="col-sm-3">
+                <input type="text" th:value="${student!=null}?${student.sname}" th:disabled="${student!=null}?'disable'"name="sname" class="form-control" id="sname" >
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="ssex" class="col-sm-2 control-label">性别</label>
+            <div class="col-sm-3">
+                <input type="text" th:value="${student!=null}?${student.ssex}" th:disabled="${student!=null}?'disable'"name="ssex" class="form-control" id="ssex">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="sclass" class="col-sm-2 control-label">班级</label>
+            <div class="col-sm-3">
+                <input type="text" th:value="${student!=null}?${student.sclass}" th:disabled="${student!=null}?'disable'"name="sclass" class="form-control" id="sclass">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="gradeone" class="col-sm-2 control-label">平时分</label>
+            <div class="col-sm-3">
+                <input type="text" th:value="${student!=null}?${student.gradeone}" name="gradeone" class="form-control" id="gradeone">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="gradetwo" class="col-sm-2 control-label">卷面分</label>
+            <div class="col-sm-3">
+                <input type="text" th:value="${student!=null}?${student.gradetwo}" name="gradetwo" class="form-control" id="gradetwo">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="gradeall" class="col-sm-2 control-label">总分</label>
+            <div class="col-sm-3">
+                <input type="text" th:value="${student!=null}?${student.gradeall}" name="gradeall" class="form-control" id="gradeall">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="object" class="col-sm-2 control-label">科目</label>
+            <div class="col-sm-3">
+                <input type="text" th:value="${student!=null}?${student.object}" name="object" class="form-control" id="object">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-success col-sm-3">确认</button>
+            </div>
+        </div>
+    </form>
+</section>
+<div th:include="footer"></div>
+</body>
+</html>

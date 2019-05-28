@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="header">
+</head>
+<body>
+<section class="content">
+    <form class="form-horizontal" th:action="@{/admin/update}">
+        <!--1.SpringMVC中配置HiddenHttpMethodFilter
+            2.创建一个POST表单
+            3.创建一个Input name=_method;值就是请求方法
+        -->
+        <input type="hidden" name="_method" value="put" th:if="${student!=null}"/>
+        <input type="hidden" name="sno" th:if="${student!=null}" th:value="${student.sno}">
+
+
+        <div class="form-group">
+            <label for="sno" class="col-sm-2 control-label">学号</label>
+            <div class="col-sm-3">
+                <input type="text" th:value="${student!=null}?${student.sno}" th:disabled="${student!=null}?'disable'" name="sno" class="form-control" id="sno">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="sname" class="col-sm-2 control-label">学生姓名</label>
+            <div class="col-sm-3">
+                <input type="text" th:value="${student!=null}?${student.sname}" name="sname" class="form-control" id="sname" >
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="ssex" class="col-sm-2 control-label">学生性别</label>
+            <div class="col-sm-3">
+                <!--<input type="text" class="form-control" id="ssex" >-->
+                <select class="form-control" th:value="${student!=null}?${student.ssex}" name="ssex" id="ssex">
+                    <option value="男">男</option>
+                    <option value="女">女</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="sclass" class="col-sm-2 control-label">所在班级</label>
+            <div class="col-sm-3">
+                <input type="text" th:value="${student!=null}?${student.sclass}" name="sclass" class="form-control" id="sclass" >
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="susername" class="col-sm-2 control-label">账号</label>
+            <div class="col-sm-3">
+                <input type="text" th:value="${student!=null}?${student.susername}" name="susername" class="form-control" id="susername">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="spassword" class="col-sm-2 control-label">密码</label>
+            <div class="col-sm-3">
+                <input type="text" th:value="${student!=null}?${student.spassword}" name="spassword" class="form-control" id="spassword">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-success col-sm-3">提交</button>
+            </div>
+        </div>
+    </form>
+</section>
+<div th:include="footer"></div>
+</body>
+</html>

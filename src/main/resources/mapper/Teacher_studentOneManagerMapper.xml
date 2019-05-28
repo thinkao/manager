@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wxy.dao.Teacher_studentOneDao">
+
+    <!--查询所有学生信息-->
+    <select id="getOneTeacher_studentAll" resultType="com.wxy.pojo.Student">
+        select * from oraclestudent
+    </select>
+
+    <!--增加一个新学生-->
+    <insert id="addOneTeacher_student" parameterType="com.wxy.pojo.Student">
+         insert into `oraclestudent`(sno,sname,ssex,sclass,susername,spassword)
+        value (#{sno},#{sname},#{ssex},#{sclass},#{susername},#{spassword})
+    </insert>
+
+   <!-- &lt;!&ndash;根据id查询学生信息&ndash;&gt;
+    <select id="getStudentBySno" parameterType="Integer" resultType="com.wxy.pojo.Student">
+        select * from javaeestudent where sno  = #{sno}
+    </select>-->
+
+    <!--取消选课-->
+    <delete id="deleteTeacher_student" parameterType="Integer">
+        delete from oraclestudent where sno = #{sno}
+    </delete>
+
+    <!--录入成绩（修改）-->
+    <update id="updateTeacher_Student" parameterType="com.wxy.pojo.Student">
+        update oraclestudent set gradeone = #{gradeone},gradetwo = #{gradetwo},gradeall = #{gradeall},object = #{object} where sno = #{sno}
+    </update>
+
+    <!--根据Sno获取学生信息-->
+    <select id="getOneStudentBySno" parameterType="Integer" resultType="com.wxy.pojo.Student">
+        select * from oraclestudent where sno = #{sno}
+    </select>
+
+</mapper>

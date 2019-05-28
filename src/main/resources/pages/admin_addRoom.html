@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="header">
+</head>
+<body>
+<section class="content">
+    <form class="form-horizontal" th:action="@{/admin/addRooms}">
+        <!--1.SpringMVC中配置HiddenHttpMethodFilter
+            2.创建一个POST表单
+            3.创建一个Input name=_method;值就是请求方法
+        -->
+        <input type="hidden" name="_method" value="put" th:if="${admin_roomList!=null}"/>
+        <input type="hidden" name="rno" th:if="${admin_roomList!=null}" th:value="${admin_roomList.rno}">
+
+
+        <div class="form-group">
+            <label for="rno" class="col-sm-2 control-label">教室门号</label>
+            <div class="col-sm-3">
+                <input type="text" th:value="${admin_roomList!=null}?${admin_roomList.rno}" th:disabled="${admin_roomList!=null}?'disable'" name="rno" class="form-control" id="rno">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="rnumber" class="col-sm-2 control-label">容纳人数</label>
+            <div class="col-sm-3">
+                <input type="text" th:value="${admin_roomList!=null}?${admin_roomList.rnumber}" name="rnumber" class="form-control" id="rnumber" >
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="rcomputer" class="col-sm-2 control-label">有无多媒体</label>
+            <div class="col-sm-3">
+                <select class="form-control" th:value="${admin_roomList!=null}?${admin_roomList.rcomputer}" name="rcomputer" id="rcomputer">
+                    <option value="有">有</option>
+                    <option value="无">无</option>
+                </select>
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-success col-sm-3">确认添加</button>
+            </div>
+        </div>
+    </form>
+</section>
+<div th:include="footer"></div>
+</body>
+</html>

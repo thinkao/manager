@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wxy.dao.StudentDao">
+
+    <!--查询所有学生信息-->
+    <select id="getStudentAll" resultType="com.wxy.pojo.Student">
+        select * from student
+    </select>
+
+    <!--增加一个新学生-->
+    <insert id="addStudent" parameterType="com.wxy.pojo.Student">
+         insert into `student`(sno,sname,ssex,sclass,susername,spassword)
+        value (#{sno},#{sname},#{ssex},#{sclass},#{susername},#{spassword})
+    </insert>
+
+    <!--根据学号删除一个学生-->
+    <delete id="deleteStudent" parameterType="Integer">
+        delete from student where  sno = #{sno}
+    </delete>
+
+    <!--根据id查询学生信息-->
+    <select id="getStudentBySno" parameterType="Integer" resultType="com.wxy.pojo.Student">
+        select * from student where sno  = #{sno}
+    </select>
+
+    <!--修改学生信息-->
+    <update id="updateStudent" parameterType="com.wxy.pojo.Student">
+         update student set sname=#{sname},ssex=#{ssex},sclass=#{sclass},
+         susername=#{susername},spassword=#{spassword} where sno = #{sno}
+    </update>
+
+</mapper>

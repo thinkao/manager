@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<meta http-equiv="Content-Type"/>
+<head th:include="header">
+    <meta charset="UTF-8" enctype="multipart/form-data"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <!--导入jquery的文件-->
+    <script type="text/javascript" th:src="@{/js/jquery-1.11.0.js}"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<section class="content">
+    <h2>我的信息</h2>
+
+    <form class="form-horizontal">
+        <input type="hidden" name="_method" value="put" th:if="${session!=null}"/>
+        <input type="hidden" name="tno" th:if="${session!=null}" th:value="${session.teacher.getTno()}">
+
+        <div class="pull-left image">
+            <img th:src="|@{/get}${session.users.avatar}|"
+                  style="width: 50px;height: 50px;margin-left: 260px" class="img-circle" />
+            <a th:href="@{/student/userInfo}">点击修改</a>
+        </div>
+
+        <!--<div class="pull-left image">
+            <img src="/assets/adminlte-2.3.7/img/user2-160x160.jpg"  style="width: 50px;height: 50px;margin-left: 260px" class="img-circle" />
+            <a th:href="@{/my/userInfo}">点击修改</a>
+        </div>-->
+
+        </br></br></br></br>
+        <div class="form-group">
+            <label for="tno" class="col-sm-2 control-label">教工编号</label>
+            <div class="col-sm-3">
+                <input type="text" th:value="${session!=null}?${session.teacher.getTno()}" th:disabled="${session!=null}?'disable'"name="tno" class="form-control" id="tno">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="tname" class="col-sm-2 control-label">姓名</label>
+            <div class="col-sm-3">
+                <input type="text" th:value="${session!=null}?${session.teacher.getTname()}" th:disabled="${session!=null}?'disable'"name="tname" class="form-control" id="tname">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="tphone" class="col-sm-2 control-label">联系方式</label>
+            <div class="col-sm-3">
+                <input type="text" th:value="${session!=null}?${session.teacher.getTphone()}" th:disabled="${session!=null}?'disable'"name="tphone" class="form-control" id="tphone">
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="tprofess" class="col-sm-2 control-label">专业</label>
+            <div class="col-sm-3">
+                <input type="text" th:value="${session!=null}?${session.teacher.getTprofess()}"th:disabled="${session!=null}?'disable'" name="tprofess" class="form-control" id="tprofess">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="tcourse" class="col-sm-2 control-label">担任课程</label>
+            <div class="col-sm-3">
+                <input type="text" th:value="${session!=null}?${session.teacher.getTcourse()}"th:disabled="${session!=null}?'disable'" name="tcourse" class="form-control" id="tcourse">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="tusername" class="col-sm-2 control-label">账号</label>
+            <div class="col-sm-3">
+                <input type="text" th:value="${session!=null}?${session.teacher.getTusername()}"th:disabled="${session!=null}?'disable'" name="tusername" class="form-control" id="tusername">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="tpassword" class="col-sm-2 control-label">密码</label>
+            <div class="col-sm-3">
+                <input type="text" th:value="${session!=null}?${session.teacher.getTpassword()}"th:disabled="${session!=null}?'disable'" name="tpassword" class="form-control" id="tpassword">
+            </div>
+        </div>
+
+    </form>
+</section>
+<div th:include="footer"></div>
+</body>
+</html>

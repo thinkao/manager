@@ -1,0 +1,5 @@
+<root>
+    <item name='org.apache.shiro.spring.web.ShiroFilterFactoryBean'>
+        <annotation name='java.lang.Deprecated'/>
+    </item>
+</root>

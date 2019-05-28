@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wxy.dao.StudentTestDao">
+
+    <!--查询所有课表信息-->
+    <select id="getStudentTestAll" resultType="com.wxy.pojo.Admin_course">
+        select * from studenttest
+    </select>
+
+    <!--增加-->
+    <insert id="addStudentTest" parameterType="com.wxy.pojo.Admin_course">
+        insert into studenttest values (#{cno},#{cname},#{cteacher},#{cnumber},#{coursetab})
+    </insert>
+
+    <!--根据cno查-->
+    <select id="getCourseByCno" parameterType="Integer" resultType="com.wxy.pojo.Admin_course">
+        select * from course where cno = #{cno}
+    </select>
+
+    <!--删除-->
+    <delete id="deleteStudentTest" parameterType="Integer">
+        delete from studenttest where cno = #{cno}
+    </delete>
+
+</mapper>

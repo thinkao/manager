@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="header">
+</head>
+<body>
+<section class="content table-content">
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+        <h2>教室信息</h2>
+        <a th:href="@{/admin/addRoom}" class="btn btn-success">添加</a>
+        <div class="table-responsive">
+            <table class="table table-striped table-sm" >
+                <thead>
+                <tr>
+                    <th>教室门号</th>
+                    <th>容纳人数</th>
+                    <th>有无多媒体</th>
+                </tr>
+                </thead>
+                <tbody th:each="admin_roomList:${admin_roomList}">
+                <tr>
+                    <td th:text="${admin_roomList.rno}">1,001</td>
+                    <td th:text="${admin_roomList.rnumber}">1,001</td>
+                    <td th:text="${admin_roomList.rcomputer}">1,001</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+   <!-- <form id="deleteCourse" method="post">
+        <input type="hidden" name="_method" value="delete"/>
+    </form>-->
+</section>
+<div th:include="footer"></div>
+<!--<script>
+    $(".deleteBtn").click(function () {
+        $("#deleteCourse").attr("action",$(this).attr("del_uri")).submit();
+    })
+</script>-->
+</body>
+</html>
